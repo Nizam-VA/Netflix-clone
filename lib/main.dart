@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix/core/colors/colors.dart';
-import 'package:netflix/presentation/main/screen_main.dart';
+import 'package:netflix/view/main/screen_main.dart';
 
 void main() {
   runApp(const MyApp());
