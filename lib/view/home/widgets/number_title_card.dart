@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
+import 'package:netflix/model/upcoming/upcoming.dart';
 import 'package:netflix/view/home/widgets/number_card.dart';
 import 'package:netflix/view/widgets/main_title.dart';
 
 class NumberTitleCard extends StatelessWidget {
-  const NumberTitleCard({
-    super.key,
-  });
+  NumberTitleCard({super.key, required this.upcoming});
+  List<Upcoming> upcoming;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +23,7 @@ class NumberTitleCard extends StatelessWidget {
                 10,
                 (index) => NumberCard(
                       index: index,
+                      image: upcoming[index].imagePath,
                     )),
           ),
         )

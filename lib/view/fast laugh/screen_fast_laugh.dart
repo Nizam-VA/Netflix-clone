@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/controller/videos/videos_services.dart';
-import 'package:netflix/model/videos/videos.dart';
 import 'package:netflix/view/fast%20laugh/widgets/video_list_item.dart';
 
 class ScreenFastLaugh extends StatefulWidget {
@@ -11,16 +9,16 @@ class ScreenFastLaugh extends StatefulWidget {
 }
 
 class _ScreenFastLaughState extends State<ScreenFastLaugh> {
-  List<Videos> videos = [];
-  Future getAllVideos() async {
-    videos = await getVideos();
-  }
+  // List<Videos> videos = [];
+  // Future getAllVideos() async {
+  //   videos = await getVideos();
+  // }
 
-  @override
-  void initState() {
-    getAllVideos();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   getAllVideos();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +27,9 @@ class _ScreenFastLaughState extends State<ScreenFastLaugh> {
             child: PageView(
       scrollDirection: Axis.vertical,
       children: List.generate(
-          videos.length,
+          videoPathList.length,
           (index) => VideoListItemWidget(
-              index: index, videoUrl: videos[index].videoUrl)),
+              index: index, videoUrl: videoPathList[index])),
     )));
   }
 }

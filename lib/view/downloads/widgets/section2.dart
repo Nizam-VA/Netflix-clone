@@ -19,6 +19,12 @@ class _Section2State extends State<Section2> {
     setState(() {});
   }
 
+  List<String> images = [
+    'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/rpzFxv78UvYG5yQba2soO5mMl4T.jpg',
+    'https://www.themoviedb.org/t/p/w220_and_h330_face/A4LTXT8MMZIr4aIwhE4qbGFivBo.jpg',
+    'https://www.themoviedb.org/t/p/w220_and_h330_face/uuot1N5AgZ7xRCKgm4ZCwOhgIJu.jpg'
+  ];
+
   @override
   void initState() {
     getAllMovies();
@@ -54,19 +60,19 @@ class _Section2State extends State<Section2> {
                 ),
               ),
               DownloadsImageWidget(
-                image: imageBase + downloadImages[0].imagePath,
+                image: images[1],
                 angle: 20,
                 margin: const EdgeInsets.only(left: 130, bottom: 35),
                 size: Size(size.width * .4, size.height * .22),
               ),
               DownloadsImageWidget(
-                image: imageBase + downloadImages[1].imagePath,
+                image: images[2],
                 angle: -20,
                 margin: const EdgeInsets.only(right: 130, bottom: 35),
                 size: Size(size.width * .4, size.height * .22),
               ),
               DownloadsImageWidget(
-                image: imageBase + downloadImages[2].imagePath,
+                image: images[0],
                 angle: 0,
                 margin: const EdgeInsets.only(left: 0, bottom: 5),
                 size: Size(size.width * .4, size.height * .26),

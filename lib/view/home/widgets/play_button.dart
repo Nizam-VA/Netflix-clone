@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/controller/popular/popular_service.dart';
 import 'package:netflix/controller/top_rated/top_rated_services.dart';
+import 'package:netflix/controller/upcoming/upcoming_services.dart';
 import 'package:netflix/controller/videos/videos_services.dart';
 import 'package:netflix/core/colors/colors.dart';
 
@@ -16,6 +17,7 @@ class PlayButtonWidget extends StatelessWidget {
       style:
           ButtonStyle(backgroundColor: MaterialStateProperty.all(kWhiteColor)),
       onPressed: () async {
+        await getAllUpcoming();
         await getTopRatedMovies();
         await getAllPopular();
         await getVideos();

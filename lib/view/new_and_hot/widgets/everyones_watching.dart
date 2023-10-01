@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/model/top_rated/top_rated.dart';
+import 'package:netflix/model/upcoming/upcoming.dart';
 import 'package:netflix/view/new_and_hot/widgets/every_content.dart';
 
 class EveryonesWatchingWidget extends StatelessWidget {
   EveryonesWatchingWidget({super.key, required this.everyone});
-  List<TopRated> everyone;
+  List<Upcoming> everyone;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class EveryonesWatchingWidget extends StatelessWidget {
       itemCount: everyone.length,
       itemBuilder: (context, index) {
         return EveryonesWatchingContent(
-            width: width, topRated: everyone[index]);
+            width: width, upcoming: everyone[index]);
       },
     );
   }

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/view/search/widgets/search_result.dart';
+import 'package:netflix/core/constants.dart';
 
 class MainCard extends StatelessWidget {
-  const MainCard({super.key});
+  const MainCard({super.key, required this.url});
+  final String url;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          image: const DecorationImage(
-              image: NetworkImage(imageUrl), fit: BoxFit.cover),
+          image: DecorationImage(
+              image: NetworkImage(imageBase + url), fit: BoxFit.cover),
           borderRadius: BorderRadius.circular(10)),
     );
   }

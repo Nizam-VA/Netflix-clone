@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:netflix/core/constants.dart';
+import 'package:netflix/model/popular/popular.dart';
 import 'package:netflix/view/search/widgets/search_title.dart';
 import 'package:netflix/view/search/widgets/top_searched.dart';
 
@@ -7,7 +8,8 @@ final imageURL =
     'https://www.themoviedb.org/t/p/w500_and_h282_face/2bpJtl7GzjeceQJz6YnfMLOhlIU.jpg';
 
 class SearchIdleWidget extends StatelessWidget {
-  const SearchIdleWidget({super.key});
+  SearchIdleWidget({super.key, required this.popular});
+  List<Popular> popular;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,11 @@ class SearchIdleWidget extends StatelessWidget {
             padding: const EdgeInsets.only(right: 8.0),
             child: ListView.separated(
                 shrinkWrap: true,
-                itemBuilder: (context, index) => const TopSearchedListTile(),
+                itemBuilder: (context, index) => TopSearchedListTile(
+                    url: popular[index].imagePath,
+                    movieName: popular[index].title),
                 separatorBuilder: (context, index) => const SizedBox(),
-                itemCount: 10),
+                itemCount: popular.length),
           ),
         )
       ],

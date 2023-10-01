@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:netflix/controller/popular/popular_service.dart';
 import 'package:netflix/controller/top_rated/top_rated_services.dart';
+import 'package:netflix/controller/upcoming/upcoming_services.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/model/popular/popular.dart';
 import 'package:netflix/model/top_rated/top_rated.dart';
+import 'package:netflix/model/upcoming/upcoming.dart';
 import 'package:netflix/view/home/widgets/background_card.dart';
 import 'package:netflix/view/home/widgets/number_title_card.dart';
 import 'package:netflix/view/widgets/main_title_card.dart';
@@ -22,9 +24,12 @@ class ScreenHome extends StatefulWidget {
 class _ScreenHomeState extends State<ScreenHome> {
   List<TopRated> topRated = [];
   List<Popular> popular = [];
+  List<Upcoming> upcoming = [];
   Future getAllMovies() async {
     topRated = await getTopRatedMovies();
     popular = await getAllPopular();
+    upcoming = await getAllUpcoming();
+    print(upcoming.length);
     setState(() {});
   }
 
@@ -57,14 +62,14 @@ class _ScreenHomeState extends State<ScreenHome> {
                 children: [
                   ListView(
                     children: [
-                      BackgroundCard(imageUrl: topRated[2].imagePath),
+                      BackgroundCard(),
                       MainTitleCard(
                           movies: topRated, title: 'Release in the past year'),
-                      MainTitleCard(movies: topRated, title: 'Trending Now'),
-                      NumberTitleCard(),
-                      MainTitleCard(movies: topRated, title: 'Tense Dramas'),
+                      MainTitleCard(movies: popular, title: 'Trending Now'),
+                      NumberTitleCard(upcoming: upcoming),
+                      MainTitleCard(movies: upcoming, title: 'Tense Dramas'),
                       MainTitleCard(
-                          movies: topRated, title: 'South Indian Cinema'),
+                          movies: popular, title: 'South Indian Cinema'),
                     ],
                   ),
                   scrollNotifier.value

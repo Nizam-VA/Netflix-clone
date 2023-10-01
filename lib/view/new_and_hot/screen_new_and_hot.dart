@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/controller/top_rated/top_rated_services.dart';
+import 'package:netflix/controller/upcoming/upcoming_services.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/model/top_rated/top_rated.dart';
+import 'package:netflix/model/upcoming/upcoming.dart';
 import 'package:netflix/view/new_and_hot/widgets/coming_soon.dart';
 import 'package:netflix/view/new_and_hot/widgets/everyones_watching.dart';
 
@@ -15,9 +17,11 @@ class ScreenNewAndHot extends StatefulWidget {
 
 class _ScreenNewAndHotState extends State<ScreenNewAndHot> {
   List<TopRated> comingMovies = [];
+  List<Upcoming> everyOne = [];
 
   Future getAllMovies() async {
     comingMovies = await getTopRatedMovies();
+    everyOne = await getAllUpcoming();
     setState(() {});
   }
 
@@ -59,7 +63,7 @@ class _ScreenNewAndHotState extends State<ScreenNewAndHot> {
           ),
           body: TabBarView(children: [
             ComingSoonWidget(comingMovies: comingMovies),
-            EveryonesWatchingWidget(everyone: comingMovies),
+            EveryonesWatchingWidget(everyone: everyOne),
           ])),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
-import 'package:netflix/model/top_rated/top_rated.dart';
+import 'package:netflix/model/upcoming/upcoming.dart';
 import 'package:netflix/view/new_and_hot/widgets/icon_button.dart';
 import 'package:netflix/view/widgets/video_widget.dart';
 
@@ -9,11 +9,11 @@ class EveryonesWatchingContent extends StatelessWidget {
   EveryonesWatchingContent({
     super.key,
     required this.width,
-    required this.topRated,
+    required this.upcoming,
   });
 
   final double width;
-  TopRated topRated;
+  Upcoming upcoming;
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +24,18 @@ class EveryonesWatchingContent extends StatelessWidget {
         children: [
           kHight,
           Text(
-            topRated.title,
+            upcoming.title,
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           kHight,
           Text(
-            topRated.overview,
+            upcoming.overview,
             style: TextStyle(
               color: kGreyColor,
             ),
           ),
           kHight50,
-          VideoWidget(width: width, imagePath: topRated.imagePath),
+          VideoWidget(width: width, imagePath: upcoming.imagePath),
           kHight,
           const Row(
             mainAxisAlignment: MainAxisAlignment.end,

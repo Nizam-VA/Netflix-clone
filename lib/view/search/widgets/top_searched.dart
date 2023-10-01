@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
-import 'package:netflix/view/search/widgets/search_idle.dart';
 
 class TopSearchedListTile extends StatelessWidget {
-  const TopSearchedListTile({super.key});
+  const TopSearchedListTile(
+      {super.key, required this.url, required this.movieName});
+  final String url;
+  final String movieName;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +19,14 @@ class TopSearchedListTile extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
-              image: NetworkImage(imageURL),
+              image: NetworkImage(imageBase + url),
             ),
           ),
         ),
         kWidth,
-        const Expanded(
+        Expanded(
             child: Text(
-          'Movie Name',
+          movieName,
           style: TextStyle(fontWeight: FontWeight.bold),
         )),
         const Icon(
