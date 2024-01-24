@@ -8,7 +8,11 @@ String getUrl =
 
 Future<List<Videos>> getVideos() async {
   final _response = await http.get(Uri.parse(getUrl));
-  final _bodyAsJson = jsonDecode(_response.body) as List<dynamic>;
-  final _data = _bodyAsJson.map((data) => Videos.fromJson(data)).toList();
-  return _data;
+  if (_response.statusCode == 200) {
+    final _bodyAsJson = jsonDecode(_response.body) as List<dynamic>;
+    final _data = _bodyAsJson.map((data) => Videos.fromJson(data)).toList();
+    return _data;
+  } else {
+    return [];
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
+import 'package:netflix/view/search/widgets/search_idle.dart';
 
 class AppBarWidget extends StatelessWidget {
   String title;
@@ -15,7 +16,11 @@ class AppBarWidget extends StatelessWidget {
         const Spacer(),
         const Icon(Icons.cast, color: Colors.white, size: 30),
         kWidth,
-        Container(color: Colors.blue, height: 30, width: 30),
+        Container(
+            color: Colors.blue,
+            height: 28,
+            width: 28,
+            child: Image.network(imageURL, fit: BoxFit.cover)),
         kWidth,
       ],
     );

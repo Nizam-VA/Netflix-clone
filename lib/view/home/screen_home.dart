@@ -10,6 +10,7 @@ import 'package:netflix/model/top_rated/top_rated.dart';
 import 'package:netflix/model/upcoming/upcoming.dart';
 import 'package:netflix/view/home/widgets/background_card.dart';
 import 'package:netflix/view/home/widgets/number_title_card.dart';
+import 'package:netflix/view/search/widgets/search_idle.dart';
 import 'package:netflix/view/widgets/main_title_card.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(false);
@@ -29,7 +30,7 @@ class _ScreenHomeState extends State<ScreenHome> {
     topRated = await getTopRatedMovies();
     popular = await getAllPopular();
     upcoming = await getAllUpcoming();
-    print(upcoming.length);
+
     setState(() {});
   }
 
@@ -88,9 +89,10 @@ class _ScreenHomeState extends State<ScreenHome> {
                                       color: Colors.white, size: 30),
                                   kWidth,
                                   Container(
-                                      color: Colors.blue,
                                       height: 30,
-                                      width: 30),
+                                      width: 30,
+                                      child: Image.network(imageURL,
+                                          fit: BoxFit.cover)),
                                   kWidth,
                                 ],
                               ),

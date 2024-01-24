@@ -8,8 +8,12 @@ String getUrl =
 
 Future<List<TopRated>> getTopRatedMovies() async {
   final _response = await http.get(Uri.parse(getUrl));
-  final _bodyAsJson = jsonDecode(_response.body) as Map<String, dynamic>;
-  final _data = TopRatedList.fromJson(_bodyAsJson['results']);
-  print(_data.topRatedList[1].title);
-  return _data.topRatedList;
+  if (_response.statusCode == 200) {
+    final _bodyAsJson = jsonDecode(_response.body) as Map<String, dynamic>;
+    final _data = TopRatedList.fromJson(_bodyAsJson['results']);
+    print(_data.topRatedList[1].title);
+    return _data.topRatedList;
+  } else {
+    return [];
+  }
 }

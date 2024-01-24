@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix/controller/debouncer/debouncer.dart';
 import 'package:netflix/controller/popular/popular_service.dart';
+import 'package:netflix/controller/searched/searched_services.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/model/popular/popular.dart';
+import 'package:netflix/model/searched/searched.dart';
 import 'package:netflix/view/search/widgets/search_idle.dart';
 import 'package:netflix/view/search/widgets/search_result.dart';
 
@@ -16,7 +19,9 @@ class ScreenSearch extends StatefulWidget {
 
 class _ScreenSearchState extends State<ScreenSearch> {
   final _controller = TextEditingController();
+  final _debouncer = Debouncer(delay: const Duration(milliseconds: 500));
   List<Popular> popular = [];
+  List<Movie> searched = [];
   bool isTaped = true;
   Future getPopular() async {
     popular = await getAllPopular();
@@ -48,8 +53,11 @@ class _ScreenSearchState extends State<ScreenSearch> {
                   color: kGreyColor),
               style: const TextStyle(color: kWhiteColor),
               onChanged: (value) {
-                setState(() {
-                  value.isEmpty ? isTaped = true : isTaped = false;
+                _debouncer.call(() async {
+                  searched = await searchResult(value);
+                  setState(() {
+                    value.isEmpty ? isTaped = true : isTaped = false;
+                  });
                 });
               },
             ),
@@ -64,6 +72,6 @@ class _ScreenSearchState extends State<ScreenSearch> {
   Widget _isEmpty(String value) {
     return isTaped
         ? Expanded(child: SearchIdleWidget(popular: popular))
-        : const Expanded(child: SearchResultWidget());
+        : Expanded(child: SearchResultWidget(searched: searched));
   }
 }

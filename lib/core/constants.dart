@@ -23,3 +23,5 @@ const everyones =
 const textStyleHomeTitle = TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
 
 String imageBase = 'https://image.tmdb.org/t/p/w355_and_h200_multi_faces/';
+
+String apiKey = '599db4cbf9ae4345b53ed08d01450277';

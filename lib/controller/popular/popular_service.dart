@@ -8,8 +8,12 @@ String getUrl =
 
 Future<List<Popular>> getAllPopular() async {
   final _response = await http.get(Uri.parse(getUrl));
-  final _bodyAsJson = jsonDecode(_response.body) as Map<String, dynamic>;
-  final _data = PopularList.fromJson(_bodyAsJson['results']);
-  print(_data.popularList[0].overview);
-  return _data.popularList;
+  if (_response.statusCode == 200) {
+    final _bodyAsJson = jsonDecode(_response.body) as Map<String, dynamic>;
+    final _data = PopularList.fromJson(_bodyAsJson['results']);
+    print(_data.popularList[1].title);
+    return _data.popularList;
+  } else {
+    return [];
+  }
 }

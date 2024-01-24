@@ -7,6 +7,7 @@ import 'package:netflix/model/top_rated/top_rated.dart';
 import 'package:netflix/model/upcoming/upcoming.dart';
 import 'package:netflix/view/new_and_hot/widgets/coming_soon.dart';
 import 'package:netflix/view/new_and_hot/widgets/everyones_watching.dart';
+import 'package:netflix/view/search/widgets/search_idle.dart';
 
 class ScreenNewAndHot extends StatefulWidget {
   ScreenNewAndHot({super.key});
@@ -45,8 +46,17 @@ class _ScreenNewAndHotState extends State<ScreenNewAndHot> {
             actions: [
               const Icon(Icons.cast, color: Colors.white, size: 30),
               kWidth,
-              Container(color: Colors.blue, width: 30),
-              kWidth,
+              Row(
+                children: [
+                  Container(
+                    color: Colors.blue,
+                    height: 28,
+                    width: 30,
+                    child: Image.network(imageURL, fit: BoxFit.cover),
+                  ),
+                  kWidth,
+                ],
+              ),
             ],
             bottom: TabBar(
                 labelColor: kBlackColor,

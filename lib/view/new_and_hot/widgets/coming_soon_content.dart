@@ -65,13 +65,11 @@ class ComingSoonContentWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
-                    child: Text(
-                      topRated.title.toUpperCase(),
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis),
-                    ),
+                    child: Text(topRated.title.toUpperCase(),
+                        style: const TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis)),
                   ),
                   const Row(
                     children: [

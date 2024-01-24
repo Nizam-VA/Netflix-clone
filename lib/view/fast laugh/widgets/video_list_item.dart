@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix/view/search/widgets/search_idle.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoListItemWidget extends StatefulWidget {
@@ -22,6 +23,7 @@ class _VideoListItemWidgetState extends State<VideoListItemWidget> {
   void initState() {
     super.initState();
     videoController(videoPath: videoPathList[widget.index]);
+    setState(() {});
   }
 
   void videoController({required String videoPath}) {
@@ -94,7 +96,7 @@ class _VideoListItemWidgetState extends State<VideoListItemWidget> {
                       children: [
                         CircleAvatar(
                           radius: 30,
-                          backgroundImage: NetworkImage(imageUrl),
+                          backgroundImage: NetworkImage(imageURL),
                         ),
                         VideoActions(icon: Icons.emoji_emotions, title: 'Lol'),
                         VideoActions(icon: Icons.add, title: 'Add List'),
@@ -155,6 +157,7 @@ class VideoActions extends StatelessWidget {
 }
 
 List<String> videoPathList = [
+  'https://media.istockphoto.com/id/1455772765/video/waterfall-with-fresh-water-in-the-romantic-and-idyllic-tropical-jungle-rainforest-blue.mp4?s=mp4-640x640-is&k=20&c=-ufHs0M4TG0HCyntsf3RwpHP08EEtAlSv8APcZe6Ciw=',
   'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
   "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
   "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",

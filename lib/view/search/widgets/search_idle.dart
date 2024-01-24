@@ -4,7 +4,7 @@ import 'package:netflix/model/popular/popular.dart';
 import 'package:netflix/view/search/widgets/search_title.dart';
 import 'package:netflix/view/search/widgets/top_searched.dart';
 
-final imageURL =
+const imageURL =
     'https://www.themoviedb.org/t/p/w500_and_h282_face/2bpJtl7GzjeceQJz6YnfMLOhlIU.jpg';
 
 class SearchIdleWidget extends StatelessWidget {
